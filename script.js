@@ -9,7 +9,6 @@ var data = [ // De olika slices sommer kommer att finnas i hjulet
   { "name": "Test7", "value1": "", "value2": "" },
   { "name": "Test8", "value1": "", "value2": "" },
   { "name": "Test9", "value1": "", "value2": "" },
-  { "name": "Test10", "value1": "", "value2": "" },
 ];
 createWheel();
 function createWheel() {

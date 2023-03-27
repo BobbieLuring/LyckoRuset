@@ -213,6 +213,7 @@ text {
     -webkit-text-stroke: 0.9px white;
 }
 .title {
+    margin-left: 50px;
     font-family: var(--montefiore);
     color: var(--pink);
     font-size: 60px;
