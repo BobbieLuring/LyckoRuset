@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wheel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container flex">
+        <div class="container-wheel center col">
+            <h1 class="title">LYCKORUSET™©</h1>
+            <i class="fa-sharp fa-solid fa-caret-down fa-2xl"></i>
+            <div id="chart"></div>
+            <button class="styled-btn" id="start">Start</button>
+        </div>
+        <div class="sidebars flex">
+            <div class="sidebar-header flex">
+                <button class="btn active" onclick="headerClick(event, '1')">KNAPP</button>
+                <button class="btn" onclick="headerClick(event, '2')">KNAPP</button>
+                <button class="btn" onclick="headerClick(event, '3')">KNAPP</button>
+            </div>
+            <div class="sidebar1 flex col bar" id="1">
+                <div class="flex col" id="data-container"></div>
+                <button class="styled-btn" id="add-data-btn">Lägg till <i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="sidebar2 center bar d-none" id="2">
+                <p>sidebar 2</p>
+            </div>
+            <div class="sidebar3 center bar d-none" id="3">
+                <p>sidebar 3</p>
+            </div>
+        </div>
+        <div class="rejlers">
+            <img src="Bilder/Rejlers_Logo_2020_Neg.png">
+        </div>
+    </div>
+    <script src="propeller.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://kit.fontawesome.com/b0fc058b2f.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
