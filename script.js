@@ -21,14 +21,6 @@ function createWheel() {
     var color = d3.scale.ordinal()
   .domain([0, 1, 2])
   .range(['#2B3A55', '#2AA784', '#F6B2BB']);
-    
-
-  // om man vill ha outline
-  // var padding = { top: 10, right: 10, bottom: 10, left: 10 },
-  //   w = 600 - padding.left - padding.right,
-  //   h = 600 - padding.top - padding.bottom,
-  //   r = Math.min(w, h) / 2,
-  //   color = d3.scale.category20();
   
   d3.select("#chart svg").remove();
 
@@ -40,13 +32,6 @@ function createWheel() {
   var container = svg.append("g")
     .attr("class", "chartholder")
     .attr("transform", "translate(" + (w / 2 + padding.left) + "," + (h / 2 + padding.top) + ")");
-  
-    // Add black outline
-    // container.append("path")
-    // .attr("fill", "none")
-    // .attr("stroke", "black")
-    // .attr("stroke-width", 4)
-    // .attr("d", d3.svg.arc().outerRadius(r + 2).innerRadius(0).startAngle(0).endAngle(Math.PI * 2));
 
   var vis = container.append("g");
 
@@ -67,7 +52,7 @@ function createWheel() {
     return arc(d);
   });
 
-  // add the text baksjdh
+  // Lägger till text i hjulet
   arcs.append("text").attr("transform", function (d) {
     d.innerRadius = 0;
     d.outerRadius = r;
@@ -94,13 +79,6 @@ function assignColors(data) {
   });
   return assigned;
 }
-// var color = colors[0];
-// if (i > 0) {
-//   var availableColors = colors.filter(function(c) { return c !== previousColor; });
-//   color = availableColors[Math.floor(Math.random() * availableColors.length)];
-// }
-// previousColor = color;
-// return color;
 
 // --------------SPELAR-LOGIK---------------
 
@@ -110,8 +88,6 @@ function displayData() {
 
   for (let i = 0; i < data.length; i++) {
     let div = document.createElement('div');
-    // div.style.fontFamily = 'var(--helvetica)'
-    // div.style.width = '200px';
     div.classList.add('players')
     div.classList.add('flex')
     div.classList.add('btn-gap')
@@ -123,7 +99,6 @@ function displayData() {
   }
 }
 
-// Function to add new data
 function addData() {
   let name = prompt('Enter data name:');
   if (name) {
@@ -134,17 +109,14 @@ function addData() {
   createWheel();
 }
 
-// Function to remove data
 function removeData(index) {
   data.splice(index, 1);
   displayData();
   createWheel();
 }
 
-// Event listener for add data button
 document.getElementById('add-data-btn').addEventListener('click', addData);
 
-// Display the initial data
 displayData();
 
 // -------------SNURR OCH SLUMP------------------
@@ -167,7 +139,6 @@ var wheel = new Propeller(document.getElementById('chart'), {
 wheel.unbind(); //Stänger av så det inte går att styra hjulet med musen
 
 btn.addEventListener('click', () => {
-  console.log('hej')
   btn.disabled = true;
   btn.style.opacity = 0.5;
   btn.style.background = "gray";
@@ -187,16 +158,6 @@ function determineWinner(angle) {
   for (let i = 0; i < data.length; i++) {
     if (wheel.angle > data[i].value1 && wheel.angle < data[i].value2) {
       console.log(data[i].name + ' vann')
-      // let node = document.getElementById('result').children;
-      //node[1].innerHTML = parseInt(node[1].innerHTML) + 1;
-      // console.log(node[2].id)
-      // for(let y = 0; y < node.length; y++){
-      // console.log(data[i].name, node[y].innerHTML)
-      // if(data[i].name == node[y].id){
-      //   console.log('hejsan')
-      //   node[y].innerHTML = parseInt(node[y].innerHTML) + 1;
-      // }
-      // }
     }
   }
 
