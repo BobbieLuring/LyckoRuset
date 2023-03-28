@@ -185,13 +185,11 @@ text {
     font-size: 13px;
     pointer-events: none;
 }
-
 #chart {
     width: 600px;
-    height: 600px;
+    height: 70%;
     top: 0;
     left: 0;
-    /* padding: 2px; */
 }
 .fa-caret-down {
     margin-bottom: 7px;
@@ -224,5 +222,5 @@ text {
     width: 400px;
 }
 .rejlers img {
-    width: 100%;
+    width: 80%;
 }

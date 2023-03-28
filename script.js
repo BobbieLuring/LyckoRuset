@@ -14,11 +14,11 @@ createWheel();
 function createWheel() {
   var padding = { top: 0, right: 0, bottom: 0, left: 0 },
     w = 600 - padding.left - padding.right,
-    h = 600 - padding.top - padding.bottom,
+    h = window.innerHeight * 0.7 - padding.top - padding.bottom,
     r = Math.min(w, h) / 2;
     // color = d3.scale.category20();//category20c()
     var color = d3.scale.ordinal()
-  .domain([0, 1, 2])
+  .domain([0, 1, 2,])
   .range(['#2B3A55', '#2AA784', '#F6B2BB']);
   
   d3.select("#chart svg").remove();
@@ -38,7 +38,6 @@ function createWheel() {
   // declare an arc generator function
   var arc = d3.svg.arc().outerRadius(r);
   // select paths, use arc generator to draw
-  var colors = assignColors(data);
   var arcs = vis.selectAll("g.slice")
     .data(pie)
     .enter()
@@ -60,23 +59,6 @@ function createWheel() {
   }).attr("text-anchor", "end").text(function (d, i) {
     return data[i].name;
   });
-}
-
-function assignColors(data) {
-  var colors = ['#2B3A55', '#2AA784', '#F6B2BB'];
-  var assigned = [];
-  data.forEach(function(d, i) {
-    if (i === 0) {
-      assigned.push(colors[Math.floor(Math.random() * colors.length)]);
-    } else {
-      var prev = assigned[i - 1];
-      var choices = colors.filter(function(color) {
-        return color !== prev;
-      });
-      assigned.push(choices[Math.floor(Math.random() * choices.length)]);
-    }
-  });
-  return assigned;
 }
 
 // --------------SPELAR-LOGIK---------------
@@ -131,7 +113,6 @@ var wheel = new Propeller(document.getElementById('chart'), {
       btn.style.opacity = 1;
       btn.style.background = "var(--green)";
       determineWinner(22.5);
-      //btn.click();
     }
   }
 });
@@ -157,6 +138,7 @@ function determineWinner(angle) {
   for (let i = 0; i < data.length; i++) {
     if (wheel.angle > data[i].value1 && wheel.angle < data[i].value2) {
       console.log(data[i].name + ' vann')
+      window.alert(data[i].name + ' vann');
     }
   }
 
