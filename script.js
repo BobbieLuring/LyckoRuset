@@ -4,22 +4,31 @@ var data = [ // De olika slices sommer kommer att finnas i hjulet
   { "name": "Test2", "value1": "", "value2": "" },
   { "name": "Test3", "value1": "", "value2": "" },
   { "name": "Test4", "value1": "", "value2": "" },
-  { "name": "Test5", "value1": "", "value2": "" },
-  { "name": "Test6", "value1": "", "value2": "" },
-  { "name": "Test7", "value1": "", "value2": "" },
-  { "name": "Test8", "value1": "", "value2": "" },
-  { "name": "Test9", "value1": "", "value2": "" },
+  // { "name": "Test5", "value1": "", "value2": "" },
+  // { "name": "Test6", "value1": "", "value2": "" },
+  // { "name": "Test7", "value1": "", "value2": "" },
+  // { "name": "Test8", "value1": "", "value2": "" },
+  // { "name": "Test9", "value1": "", "value2": "" },
 ];
 createWheel();
 function createWheel() {
   var padding = { top: 0, right: 0, bottom: 0, left: 0 },
-    w = 600 - padding.left - padding.right,
-    h = window.innerHeight * 0.7 - padding.top - padding.bottom,
-    r = Math.min(w, h) / 2;
-    // color = d3.scale.category20();//category20c()
+  w = window.innerHeight * 0.7 - padding.top - padding.bottom,
+  h = window.innerHeight * 0.7 - padding.top - padding.bottom,
+  r = Math.min(w, h) / 2;
+  color = d3.scale.category20();//category20c()
+ console.log(data.length)
+  if ((data.length + 2) % 3 === 0) {
+    console.log(" is a multiple of three");
     var color = d3.scale.ordinal()
-  .domain([0, 1, 2,])
-  .range(['#2B3A55', '#2AA784', '#F6B2BB']);
+    .domain([0, 1, 2, 3])
+    .range(['#2B3A55', '#2AA784', '#F6B2BB', '#2AA784']);
+  } else {
+    console.log(" is not a multiple of three");
+    var color = d3.scale.ordinal()
+    .domain([0, 1, 2,])
+    .range(['#2B3A55', '#2AA784', '#F6B2BB']);
+  }
   
   d3.select("#chart svg").remove();
 
@@ -133,7 +142,6 @@ btn.addEventListener('click', () => {
 });
 
 function determineWinner(angle) {
-  // console.log()
   fillValues();
   for (let i = 0; i < data.length; i++) {
     if (wheel.angle > data[i].value1 && wheel.angle < data[i].value2) {
