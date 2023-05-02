@@ -68,6 +68,14 @@ h1{
     font-family: var(--helvetica);
     cursor: pointer;
 }
+.reset-btn {
+    border-radius: 18px;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-family: var(--helvetica);
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
 .btn {
     font-family: var(--montefiore);
     font-size: 29px;
@@ -140,10 +148,13 @@ h1{
   }
 
 .players {
-    width: 250px;
+    width: 300px;
     font-family: var(--helvetica);
     color: white;
     font-size: 20px;
+    background-color: #00000047;
+    padding: 1px 0 1px 9px;
+    border-radius: 15px;
 }
 
 .btn-gap {
@@ -223,4 +234,37 @@ text {
 }
 .rejlers img {
     width: 200px
+}
+
+#close-popup {
+    padding: 5px 15px 5px 15px;
+    font-size: 16px;
+}
+
+#victory-popup {
+    font-family: var(--helvetica);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    height: 200px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-99%, -50%);
+    /* background-color: rgb(139, 250, 124); */
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+}
+
+.winnerEl {
+    font-size: 21px;
+}
+
+.playerScore {
+    flex-grow: 4;
+    text-align: end;
+    padding-right: 40px;
 }
