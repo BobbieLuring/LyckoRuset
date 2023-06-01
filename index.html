@@ -11,7 +11,10 @@
 <body>
     <div class="container flex">
         <div class="container-wheel center col">
-            <div class="flex"><h1 class="title">LYCKORUSET™©</h1><p style="color: #ffffff; font-family: var(--helvetica);">(beta 2.0)</p></div>
+            <div class="flex">
+                <h1 class="title">LYCKORUSET™©</h1>
+                <p style="color: #ffffff; font-family: var(--helvetica);">(beta 2.1)</p>
+            </div>
             <i class="fa-sharp fa-solid fa-caret-down fa-2xl" style="color: #ffffff;"></i>
             <div id="chart"></div>
             <button class="styled-btn" id="start">Start</button>
@@ -26,11 +29,11 @@
                 <div class="flex col" id="data-container"></div>
                 <div class="flex">
                     <button class="styled-btn" id="add-data-btn">Lägg till <i class="fa-solid fa-plus"></i></button>
-                    <button class="remove-btn reset-btn" onclick="resetScore()">Reset</button>
+                    <button class="reset-btn remove-btn" onclick="resetScore()">Nollställ poäng</button>
                 </div>
             </div>
             <div class="sidebar2 center bar d-none" id="2">
-                <p>sidebar 2</p>
+                <button id="resize-btn" class="remove-btn">Ändra storlek</button>
             </div>
             <div class="sidebar3 center bar d-none" id="3">
                 <p>sidebar 3</p>
@@ -40,10 +43,8 @@
             <img src="Bilder/Rejlers_Logo_2020_Neg.png">
         </div>
     </div>
-    <div id="victory-popup" class="d-none">
-        <h2>Grattis!</h2>
-        <p class="winnerEl"></p>
-        <button id="close-popup" class="remove-btn">Stäng</button>
+    <div id="score-popup" class="d-none">
+        <h2 class="winnerEl"></h2>
     </div>
     <script src="propeller.js"></script>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>

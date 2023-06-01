@@ -123,18 +123,24 @@ document.getElementById('add-data-btn').addEventListener('click', addData);
 
 displayData();
 
+// ---------------- Util -------------
+
+const resize = document.getElementById('resize-btn');
+
+resize.addEventListener('click', () => {
+  createWheel();
+})
+
 // --------------- Kod för vinst rutan ----------------- 
-const closeButton = document.getElementById('close-popup');
-const popup = document.getElementById('victory-popup');
+const popup = document.getElementById('score-popup');
 
-closeButton.addEventListener('click', function() {
-  popup.classList.remove('flex');
-  popup.classList.add('d-none');
-});
-
-function showWinner(winner) {
+function showWinner(winner, score) {
   let element = document.querySelector('.winnerEl');
-  element.textContent = winner;
+  if(score !== 2) {
+    element.textContent = 'Grattis ' + winner + '! 🍺🍻';
+  } else {
+    element.textContent = 'Grattis ' + winner + ' har fått 3 poäng! 🍺🍻🎉🎊';
+  }
   popup.classList.remove('d-none');
   popup.classList.add('flex');
 }
@@ -155,7 +161,7 @@ var wheel = new Propeller(document.getElementById('chart'), {
   inertia: 1,
   onRotate: () => {
     console.log(wheel.speed)
-    if (wheel.speed < 0.008) { // så hjulet stannar när det snurrar sakta nog
+    if (wheel.speed < 0.007) { // så hjulet stannar när det snurrar sakta nog
       wheel.speed = 0;
       btn.disabled = false;
       btn.style.opacity = 1;
@@ -184,8 +190,7 @@ function determineWinner(angle) {
   fillValues();
   for (let i = 0; i < data.length; i++) {
     if (wheel.angle > data[i].value1 && wheel.angle < data[i].value2) {
-      let element = document.getElementsByClassName('winnerEl');
-      showWinner(data[i].name);
+      showWinner(data[i].name, data[i].score);
       data[i].score = data[i].score + 1;
       displayData();
       if(data[i].score === 3) {
@@ -379,7 +384,7 @@ function startWinnerConfetti() {
           },
           position: {
             x: 0,
-            y: 30,
+            y: 60,
           },
           particles: {
             move: {
@@ -396,7 +401,7 @@ function startWinnerConfetti() {
           },
           position: {
             x: 100,
-            y: 30,
+            y: 60,
           },
           particles: {
             move: {
